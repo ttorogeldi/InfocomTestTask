@@ -8,17 +8,17 @@ namespace InfocomTestTask.Interfaces
         {
             new Person()
             {
-                Id=Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 LastName = "Toha",
                 SureName = "Bratan",
-                Sex = false
+                Sex = Gender.Male
             },
             new Person()
             {
                 Id=Guid.NewGuid(),
                 LastName = "Sergei",
                 SureName = "Bratan",
-                Sex = false
+                Sex = Gender.Female
             }
         };
 
