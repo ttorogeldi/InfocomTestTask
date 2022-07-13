@@ -11,7 +11,10 @@ namespace InfocomTestTask.Data
         {
             IQueryable<Person> query = _personContext.People;
 
+            if (!string.IsNullOrEmpty(name))
+            {
                 query = query.Where(e => e.SureName.Contains(name) || e.LastName.Contains(name));
+            }
 
             return query.ToList();
         }
