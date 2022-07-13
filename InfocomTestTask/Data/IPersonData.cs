@@ -4,6 +4,7 @@ namespace InfocomTestTask.Interfaces
 {
     public interface IPersonData
     {
+        Task<IEnumerable<Person>> Search(string name);
         List<Person> GetPeople();
 
         Person GetPerson(Guid id);
