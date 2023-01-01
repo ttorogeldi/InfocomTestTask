@@ -6,6 +6,18 @@ namespace InfocomTestTask.Data
     public class SqlPersonData : IPersonData
     {
         private PersonContext _personContext;
+
+        public async Task<IEnumerable<Person>> Search(string name)
+        {
+            IQueryable<Person> query = _personContext.People;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(e => e.SureName.Contains(name) || e.LastName.Contains(name));
+            }
+
+            return query.ToList();
+        }
         public SqlPersonData(PersonContext personContext)
         {
             _personContext = personContext;
@@ -34,6 +46,7 @@ namespace InfocomTestTask.Data
                 _person.SureName = person.SureName;
                 _person.LastName = person.LastName;
                 _person.Sex= person.Sex;
+                _person.Age= person.Age;
                 _personContext.People.Update(_person);
                 _personContext.SaveChanges();
             }

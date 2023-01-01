@@ -24,6 +24,30 @@ namespace InfocomTestTask.Controllers
         }
 
         [HttpGet]
+        [Route("[controller]/SearchPerson")]
+        public IActionResult Search(string name)
+        {
+            try
+            {
+                var result =  personData.Search(name);
+
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
+            return Ok(personData.GetPeople());
+
+        }
+
+        [HttpGet]
         [Route("[controller]/GetPerson")]
         public IActionResult GetPerson(Guid id)
         {
