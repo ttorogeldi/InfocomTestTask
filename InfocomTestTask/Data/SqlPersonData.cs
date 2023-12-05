@@ -9,14 +9,15 @@ namespace InfocomTestTask.Data
 
         public async Task<IEnumerable<Person>> Search(string name)
         {
-            IQueryable<Person> query = _personContext.People;
+            //IQueryable<Person> query = _personContext.People;
 
-            if (!string.IsNullOrEmpty(name))
-            {
-                query = query.Where(e => e.SureName.Contains(name) || e.LastName.Contains(name));
-            }
+            //if (!string.IsNullOrEmpty(name))
+            //{
+            //    query = query.Where(e => e.SureName.Contains(name) || e.LastName.Contains(name));
+            //}
 
-            return query.ToList();
+            //return query.ToList();
+            return new List<Person>();
         }
         public SqlPersonData(PersonContext personContext)
         {
@@ -29,6 +30,7 @@ namespace InfocomTestTask.Data
             _personContext.People.Add(person);
             _personContext.SaveChanges();
             return person;
+
         }
 
         public void DeletePerson(Person person)
